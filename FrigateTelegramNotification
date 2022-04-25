@@ -52,8 +52,7 @@ blueprint:
       description: Only notify if selected presence entity is not "home".
       default: ''
       selector:
-        entity: {}
-  source_url: https://gist.github.com/NdR91/5486a1e55101e062c48545395b7dd9a3
+        entity: {}  
 mode: single
 max_exceeded: silent
 trigger:
@@ -90,9 +89,9 @@ action:
     target: '{{ target_chat }}'
     disable_notification: '{{ notification }}'
     caption: |
-      Motion detected. Telecamera: {{ camera_name }} (ID: {{ id }})
+      Motion detected. Camera: {{ camera_name }} (ID: {{ id }})
     url: >-
-      {{base_url}}/api/frigate/events/{{id}}/snapshot.jpg
+      {{base_url}}///api/frigate/events/{{id}}/snapshot.jpg
 - repeat:
     sequence:
     - wait_for_trigger:
@@ -111,5 +110,5 @@ action:
         disable_notification: '{{ notification }}'
         caption: 'Motion detected. Camera: {{ camera_name }}'
         url: >-
-          {{base_url}}/api/frigate/events/{{id}}/{{camera}}/clip.mp4
+          {{base_url}}///api/frigate/events/{{id}}/{{camera}}/clip.mp4
     until: '{{ wait.trigger.payload_json[''type''] == ''end'' }}'
