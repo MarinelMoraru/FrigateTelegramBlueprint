@@ -91,7 +91,7 @@ action:
     caption: |
       Motion detected. Camera: {{ camera_name }} (ID: {{ id }})
     url: >-
-      {{base_url}}///api/frigate/events/{{id}}/snapshot.jpg
+      {{base_url}}/api/frigate/events/{{id}}/snapshot.jpg
 - repeat:
     sequence:
     - wait_for_trigger:
@@ -110,5 +110,5 @@ action:
         disable_notification: '{{ notification }}'
         caption: 'Motion detected. Camera: {{ camera_name }}'
         url: >-
-          {{base_url}}///api/frigate/events/{{id}}/{{camera}}/clip.mp4
+          {{base_url}}/api/frigate/events/{{id}}/{{camera}}/clip.mp4
     until: '{{ wait.trigger.payload_json[''type''] == ''end'' }}'
